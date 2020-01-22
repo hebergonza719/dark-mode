@@ -8,7 +8,9 @@ import { useState } from 'react';
 
 // Quick note, if you pass in arrays or objects to localStorage, you will need to parse it into JSON. Then when you retrieve it, like we do below, you'll need to parse it back into regular JavaScript.
 
-const useLocalStorage = (key, initialValue) => {
+export const useLocalStorage = (key, initialValue) => {
+  console.log("this is key", key);
+  console.log("this is initialValue", initialValue);
 
   // we are using a function as it's initial value because we could use logic if it's a function.
   const [storedValue, setStoredValue] = useState(() => {
@@ -18,8 +20,8 @@ const useLocalStorage = (key, initialValue) => {
     return item ? JSON.parse(item) : initialValue;
   });
 
+  // this value comes from the array const [darkMode, setDarkMode] = useLocalStorage in useDarkMode
   const setValue = value => {
-
     // save to state
     setStoredValue(value);
 
